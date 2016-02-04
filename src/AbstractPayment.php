@@ -1,6 +1,6 @@
 <?php
 
-namespace TBEpayment;
+namespace TBEPayment;
 
 abstract class AbstractPayment
 {
@@ -36,7 +36,7 @@ abstract class AbstractPayment
 	 */
 	protected $customerName;
 
-	public function __construct($amount = null, $variableSymbol = null, $returnUrl = null)
+	public function __construct($amount = null, $variableSymbol = null, $returnUrl = NULL)
 	{
 		$this->amount = $amount;
 		$this->variableSymbol = $variableSymbol;

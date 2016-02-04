@@ -1,6 +1,10 @@
 <?php
 
-namespace TBEpayment\CardPay;
+namespace TBEPayment\CardPay;
+
+use TBEPayment\Payment\AbstractSha256SignedMessage;
+use TBEPayment\Payment\HttpPaymentResponseInterface;
+use TBEPayment\Exception\Exception;
 
 class CardPayHttpResponse extends AbstractSha256SignedMessage implements HttpPaymentResponseInterface
 {
@@ -20,17 +24,13 @@ class CardPayHttpResponse extends AbstractSha256SignedMessage implements HttpPay
             $fields = $_GET;
         }
 
-        $this->fields['VS'] = isset($fields['VS']) ? $fields['VS'] : null;
-        $this->fields['AC'] = isset($fields['AC']) ? $fields['AC'] : null;
-        $this->fields['RES'] = isset($fields['RES']) ? $fields['RES'] : null;
-        $this->fields['SIGN'] = isset($fields['SIGN']) ? $fields['SIGN'] : null;
+        foreach ($this->readOnlyFields as $field) {
+            $this->fields[$field] = isset($fields[$field]) ? $fields[$field] : null;
+        }
     }
 
     protected function validateData()
     {
-        if (isempty($this->VS)) return false;
-        if (!($this->RES == "FAIL" || $this->RES == "OK" || $this->RES == "TOUT")) return false;
-
         return true;
     }
 
@@ -60,6 +60,7 @@ class CardPayHttpResponse extends AbstractSha256SignedMessage implements HttpPay
     public function VerifyAuthenticationCode($password)
     {
         if ($this->MID != $this->computeSign($password)) {
+            throw new Exception('VerifyAuthenticationCode');
             return false;
         }
 
@@ -75,6 +76,7 @@ class CardPayHttpResponse extends AbstractSha256SignedMessage implements HttpPay
         $publicKey = $this->getPublicKey($this->ECDSA_KEY);
 
         if ($this->verifySign($this->ECDSA, $publicKey) !== 1) {
+            throw new Exception('VerifySignature');
             return false;
         }
 

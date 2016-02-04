@@ -1,6 +1,6 @@
 <?php
 
-namespace TBEpayment\Payment;
+namespace TBEPayment\Payment;
 
 interface HttpPostPaymentRequestInterface extends SignedPaymentRequestInterface
 {

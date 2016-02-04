@@ -1,6 +1,8 @@
 <?php
 
-namespace TBEpayment\Payment;
+namespace TBEPayment\Payment;
+
+use TBEPayment\Exception\Exception;
 
 abstract class AbstractSha256SignedMessage extends AbstractPaymentMessage
 {

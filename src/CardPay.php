@@ -1,10 +1,9 @@
 <?php
 
-namespace TBEpayment;
+namespace TBEPayment;
 
-use TBEpayment\CardPay\CardPayRequest;
-use TBEpayment\CardPay\CardPayHttpResponse;
-
+use TBEPayment\CardPay\CardPayRequest;
+use TBEPayment\CardPay\CardPayHttpResponse;
 
 class CardPay extends AbstractPayment
 {
@@ -37,4 +36,5 @@ class CardPay extends AbstractPayment
 		$result = $Pres->GetPaymentResponse();
 		return $result;
 	}
+
 }

@@ -1,1 +1,8 @@
-/.idea/*
+/local
+/vendor
+/composer.lock
+/composer.local.*
+/composer.phar
+.DS_Store
+/.idea
+

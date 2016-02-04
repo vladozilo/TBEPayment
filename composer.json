@@ -1,5 +1,5 @@
 {
-    "name": "vladozilo/TBEPayment",
+    "name": "vladozilo/tbe-payment",
     "type": "library",
     "description": "PHP library for Tatrabanka ePayment",
     "license": "LGPL",

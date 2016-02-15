@@ -96,4 +96,9 @@ class CardPayHttpResponse extends AbstractSha256SignedMessage implements HttpPay
         else
             return null;
     }
+
+    public function GetVS()
+    {
+        return $this->fields['VS'];
+    }
 }

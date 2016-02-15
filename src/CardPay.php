@@ -33,7 +33,11 @@ class CardPay extends AbstractPayment
 			return false;
 		}
 
-		$result = $Pres->GetPaymentResponse();
+		$result = [
+			'result' => $Pres->GetPaymentResponse(),
+			'vs' => $Pres->GetVS()
+		];
+
 		return $result;
 	}
 

@@ -7,7 +7,7 @@ use TBEPayment\CardPay\CardPayHttpResponse;
 
 class CardPay extends AbstractPayment
 {
-	public function request($mid, $secretKey)
+	public function request($mid, $secretKey, $redirectUrlBase = null)
 	{
 		$Pres = new CardPayRequest($mid, $secretKey);
 
@@ -18,6 +18,10 @@ class CardPay extends AbstractPayment
 
 		if (!$Pres->Validate()) {
 			return false;
+		}
+
+		if($redirectUrlBase) {
+			$Pres->SetRedirectUrlBase($redirectUrlBase);
 		}
 
 		$paymentRequestUrl = $Pres->GetRedirectUrl();

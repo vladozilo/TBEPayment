@@ -8,7 +8,7 @@ use TBEPayment\Exception\Exception;
 
 class CardPayRequest extends AbstractSha256SignedMessage implements HttpRedirectPaymentRequestInterface
 {
-    const CardPay_EPayment_URL_Base = "https://moja.tatrabanka.sk/cgi-bin/e-commerce/start/e-commerce.jsp";
+    const CardPay_EPayment_URL_Base = "https://moja.tatrabanka.sk/cgi-bin/e-commerce/start/cardpay";
     private $redirectUrlBase = self::CardPay_EPayment_URL_Base;
 
     protected $secretKey = '';

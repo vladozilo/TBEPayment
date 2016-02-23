@@ -130,8 +130,6 @@ class CardPayRequest extends AbstractSha256SignedMessage implements HttpRedirect
             }
         }
 
-        $url .= 'HMAC=' . $this->HMAC;
-
         return $url;
     }
 }
